@@ -1,0 +1,14 @@
+name: LDPlugins
+main: org.lastdesire.ldplugins.LDPlugins
+version: 1.0.1
+authors: [lastdesire19]
+
+commands:
+  listen:
+    description: Ah! I've got you!
+    usage: /<command>
+
+permissions:
+  SimpleChestListenerPlugin.command.*:
+    description: Allow you to track chestopening histories.
+    default: true
