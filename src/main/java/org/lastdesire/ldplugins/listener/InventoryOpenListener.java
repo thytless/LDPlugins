@@ -1,6 +1,7 @@
 package org.lastdesire.ldplugins.listener;
 
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -67,16 +68,19 @@ public class InventoryOpenListener implements Listener, CommandExecutor {
 
         Inventory inventory;
         HumanEntity player;
+        Location location;
 
         if(event == null || event.isCancelled()) return;
 
-        if((inventory = event.getInventory()) == null || (player = event.getPlayer()) == null) return;
+        if((inventory = event.getInventory()) == null ||
+                (player = event.getPlayer()) == null ||
+                (location = inventory.getLocation()) == null) return;
 
         if(!allowedType.contains(inventory.getType())) return;
 
         String playerName = player.getName();
-        String location = LocationUtils.getInventoryLocationString(inventory);
-        playerInventoryInfo.addToMap(playerName,location);
+        String locationString = LocationUtils.getInventoryLocationString(inventory);
+        playerInventoryInfo.addToMap(playerName,locationString);
     }
 
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {

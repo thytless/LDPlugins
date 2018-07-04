@@ -11,9 +11,10 @@ import java.util.HashSet;
 
 public class LocationUtils {
 
-    public static String getInventoryLocationString(Inventory inventory){
+    private static final String UNDEFINED = "UNDEFINED";
 
-        return getLocationString(inventory.getLocation());
+    public static String getInventoryLocationString(Inventory inventory){
+        return getInventoryLocationString(inventory,4);
     }
 
     public static String getInventoryLocationString(Inventory inventory, int scale){
