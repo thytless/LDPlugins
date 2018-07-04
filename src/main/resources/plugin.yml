@@ -1,6 +1,6 @@
 name: LDPlugins
 main: org.lastdesire.ldplugins.LDPlugins
-version: 1.0.2
+version: 1.0.3
 authors: [lastdesire19]
 
 commands:

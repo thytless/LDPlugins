@@ -37,7 +37,13 @@ public class InventoryOpenListener implements Listener, CommandExecutor {
 
     private static final InventoryType[] ALLOWED_TYPE = {
             InventoryType.ANVIL,InventoryType.CHEST,InventoryType.ENCHANTING,
-            InventoryType.HOPPER,InventoryType.MERCHANT,InventoryType.SHULKER_BOX
+            InventoryType.HOPPER,InventoryType.SHULKER_BOX
+
+            /* TODO: ADD RESOLUTION TO MOBILE INVENTORIES */
+            /* 1.MERCHANT
+             * 2.CHEST ON DONKEY
+             */
+
     } ;
 
     private StringBigraph playerInventoryInfo;
