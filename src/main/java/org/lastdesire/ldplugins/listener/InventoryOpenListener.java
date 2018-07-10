@@ -18,14 +18,11 @@ import org.lastdesire.ldplugins.utils.StringBigraph;
 
 import java.util.*;
 
+import static org.lastdesire.ldplugins.utils.StaticInfo.*;
 
 public class InventoryOpenListener implements Listener, CommandExecutor {
 
-    private static final String PREFIX = ChatColor.BOLD + "[" + ChatColor.AQUA + "LDPlugins" + ChatColor.WHITE + ChatColor.BOLD + "] " + ChatColor.RESET;
 
-    private static final String ERR_NAP = PREFIX + ChatColor.RED + "You must be a player!";
-
-    private static final String ERR_ARGU = PREFIX + ChatColor.RED + "Too many arguments!";
 
     private static final String INFO_LOCATION = PREFIX + ChatColor.YELLOW + "You're searching for tracks near "
             + ChatColor.RESET;
@@ -72,17 +69,19 @@ public class InventoryOpenListener implements Listener, CommandExecutor {
     @EventHandler
     public void onInventoryOpen(InventoryOpenEvent event){
 
-        Inventory inventory;
+        if(event == null || event.isCancelled()) return;
+
+        Inventory inventory = event.getInventory();
         HumanEntity player;
         Location location;
 
-        if(event == null || event.isCancelled()) return;
+        if(inventory == null ||
+                !allowedType.contains(inventory.getType())) return;
 
-        if((inventory = event.getInventory()) == null ||
-                (player = event.getPlayer()) == null ||
+        if((player = event.getPlayer()) == null ||
                 (location = inventory.getLocation()) == null) return;
 
-        if(!allowedType.contains(inventory.getType())) return;
+
 
         String playerName = player.getName();
         String locationString = LocationUtils.getInventoryLocationString(inventory);
